@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Avantages Comparatifs de Ricardo</title>
+    <style>
+        @font-face {
+            font-family: 'Mayan';
+            src: url('path/to/your/mayan-font.ttf'); /* Remplacez par le chemin vers votre fichier de police Mayan */
+        }
+
+        body {
+            font-family: 'Mayan', Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h2, h3 {
+            color: black; /* Rend le texte noir */
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.0);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            text-align: center;
+            background-image: url('path/to/your/container-image.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slider-container {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: rgba(100, 100, 100, 0.3);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .label {
+            margin-bottom: 5px;
+            display: block;
+            font-weight: bold;
+        }
+
+        .country, .results-container {
+            margin-top: 20px;
+            border: 1px solid #888;
+            padding: 20px;
+            background-color: rgba(200, 200, 200, 0.8);
+            border-radius: 10px;
+            text-align: center;
+            background-image: url('images/back.jpg.webp');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 80%;
+            height: 8px;
+            border-radius: 5px;
+            background: #ddd;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity .15s ease-in-out;
+            margin: 0 auto;
+            display: block;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: url('images/flame.png') no-repeat center;
+            background-size: contain;
+            cursor: pointer;
+            transition: background .3s ease-in-out, border .3s ease-in-out;
+        }
+
+        input[type="range"]:focus::-webkit-slider-thumb {
+            appearance: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: url('images/flame2.png') no-repeat center;
+            background-size: contain;
+        }
+
+        input[type="range"]:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+
+            input[type="range"]::-webkit-slider-thumb {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+                margin: 5px;
+            }
+
+            input[type="range"]::-webkit-slider-thumb {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        .card-white {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1); /* Fond légèrement transparent */
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .list-inline {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .list-inline li {
+            display: inline;
+        }
+
+        .list-inline a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 2rem;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .list-inline a:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+
+        h2 {
+            color: rgb(0, 0, 0); /* Texte en noir */
+            text-align: center;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/c4d7819295.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Les Avantages Comparatifs de Ricardo</h2> <!-- Titre ajouté avec texte noir -->
+
+    <div class="country">
+        <h3>Angleterre (Industriel)</h3>
+        <p>105 heures de travail disponibles</p>
+        <div class="slider-container">
+            <label class="label" for="drapRangeUK">Heures allouées au Drap : <span id="drapValueUK">0</span></label>
+            <input type="range" id="drapRangeUK" min="0" max="105" value="0" oninput="updateValues()">
+        </div>
+
+        <div class="slider-container">
+            <label class="label" for="vinRangeUK">Heures allouées au Vin : <span id="vinValueUK">0</span></label>
+            <input type="range" id="vinRangeUK" min="0" max="105" value="0" oninput="updateValues()">
+        </div>
+
+        <p>Production Drap Angleterre: <span id="prodDrapUK">0</span></p>
+        <p>Production Vin Angleterre: <span id="prodVinUK">0</span></p>
+        <p class="error" id="errorUK"></p>
+    </div>
+
+    <div class="country">
+        <h3>Portugal (Agricole)</h3>
+        <p>105 heures de travail disponibles</p>
+        <div class="slider-container">
+            <label class="label" for="drapRangePT">Heures allouées au Drap : <span id="drapValuePT">0</span></label>
+            <input type="range" id="drapRangePT" min="0" max="105" value="0" oninput="updateValues()">
+        </div>
+
+        <div class="slider-container">
+            <label class="label" for="vinRangePT">Heures allouées au Vin : <span id="vinValuePT">0</span></label>
+            <input type="range" id="vinRangePT" min="0" max="105" value="0" oninput="updateValues()">
+        </div>
+
+        <p>Production Drap Portugal: <span id="prodDrapPT">0</span></p>
+        <p>Production Vin Portugal: <span id="prodVinPT">0</span></p>
+        <p class="error" id="errorPT"></p>
+    </div>
+
+    <div class="country">
+        <h3>Production Totale</h3>
+        <p>Total Drap: <span id="totalDrap">0</span></p>
+        <p>Total Vin: <span id="totalVin">0</span></p>
+    </div>
+
+    <script>
+        function updateValues() {
+            const drapHoursUK = parseInt(document.getElementById('drapRangeUK').value);
+            const vinHoursUK = parseInt(document.getElementById('vinRangeUK').value);
+            const drapHoursPT = parseInt(document.getElementById('drapRangePT').value);
+            const vinHoursPT = parseInt(document.getElementById('vinRangePT').value);
+
+            const errorUK = document.getElementById('errorUK');
+            const errorPT = document.getElementById('errorPT');
+            errorUK.textContent = '';
+            errorPT.textContent = '';
+
+            if (drapHoursUK + vinHoursUK > 105) {
+                errorUK.textContent = "Le total des heures allouées pour le Royaume-Uni ne doit pas dépasser 105.";
+            }
+
+            if (drapHoursPT + vinHoursPT > 105) {
+                errorPT.textContent = "Le total des heures allouées pour le Portugal ne doit pas dépasser 105.";
+            }
+
+            document.getElementById('drapValueUK').textContent = drapHoursUK;
+            document.getElementById('vinValueUK').textContent = vinHoursUK;
+            document.getElementById('drapValuePT').textContent = drapHoursPT;
+            document.getElementById('vinValuePT').textContent = vinHoursPT;
+
+            const prodDrapUK = Math.floor(drapHoursUK / 35);
+            const prodVinUK = Math.floor(vinHoursUK / 70);
+            const prodDrapPT = Math.floor(drapHoursPT / 70);
+            const prodVinPT = Math.floor(vinHoursPT / 35);
+
+            document.getElementById('prodDrapUK').textContent = prodDrapUK;
+            document.getElementById('prodVinUK').textContent = prodVinUK;
+            document.getElementById('prodDrapPT').textContent = prodDrapPT;
+            document.getElementById('prodVinPT').textContent = prodVinPT;
+
+            const totalDrap = prodDrapUK + prodDrapPT;
+            const totalVin = prodVinUK + prodVinPT;
+
+            document.getElementById('totalDrap').textContent = totalDrap;
+            document.getElementById('totalVin').textContent = totalVin;
+        }
+    </script>
+
+</div>
+
+</body>
+</html>
